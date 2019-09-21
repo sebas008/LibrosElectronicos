@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="../templates/uiConMenu.xhtml">
+	<ui:define name="content">
+	 <h:form id="frmLista">
+	 	<p:commandButton value="Nueva Sede"
+	 		action="#{sedeController.nuevaSede}" 
+	 		oncomplete="PF('wRegistrar').show()"
+	 		update=":idRegistrar"/>
+	 
+		<p:dataTable value="#{sedeController.listadoSede}" 
+			var="row" id="idLista"
+			rowKey="#{row.codSede}" selectionMode="single" 
+			rows="10"
+            paginator="true"
+            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                            					{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			binding="#{sedeController.dtFila}">
+			<p:column headerText="Codigo" style="width:50px">
+				<h:outputLabel value="#{row.codSede}" />			
+			</p:column>
+			<p:column headerText="Nombre">
+				<h:outputLabel value="#{row.nombre}"/>			
+			</p:column>
+			<p:column headerText="Departamento">
+				<h:outputLabel value="#{row.departamento.nombreDepartamento}"/>			
+			</p:column>
+			<p:column headerText="Provincia">
+				<h:outputLabel value="#{row.provincia.nombreProvincia}" />
+			</p:column>
+			<p:column headerText="Capacidad">
+				<h:outputLabel value="#{row.capacidad}"/>			
+			</p:column>
+			<p:column headerText="">
+				<p:commandButton icon="fa fa-fw fa-edit"  
+					action="#{sedeController.seleccionar}"
+					oncomplete="PF('wActualizar').show()"
+					update=":idActualizar"/>
+			</p:column>
+			<p:column headerText="">
+				<p:commandButton icon="fa fa-fw fa-remove" 
+					action="#{sedeController.seleccionar}"
+					onclick="PF('cd').show()"/>
+			</p:column>
+			
+		   </p:dataTable>
+		   <p:confirmDialog message="Seguro de eliminar?" 
+		   		widgetVar="cd">
+		   			<p:commandButton value="Si" 
+		   				action="#{sedeController.eliminarUsuario}"
+		   				oncomplete="PF('cd').hide()"
+		   				update="idLista"/>
+		   			<p:commandButton value="No" 
+		   				onclick="PF('cd').hide()"/>
+		   </p:confirmDialog>
+		</h:form>
+		<!-- dialogo para registrar sede -->
+		<p:dialog header="Registrar Sede" modal="true" 
+				widgetVar="wRegistrar" id="idRegistrar">
+				 <h:form>
+				 	<p:growl  autoUpdate="true" showDetail="true"/>
+				 	<p:fieldset legend="Registrar Sede">
+				 		<p:panelGrid columns="2">
+				 		<h:outputLabel value="Codigo" />
+				 		<p:inputText
+				 			value="#{sedeController.sede.codSede}"
+				 			required="true" requiredMessage="Clave Obligatoria"/>
+				 		<h:outputLabel value="Nombre:" />
+				 		<p:inputText 
+				 			value="#{sedeController.sede.nombre}"
+				 			required="true" requiredMessage="Nombre obligatorio"/>
+				 		<h:outputLabel value="Departamento" />
+				 		<p:selectOneMenu value="#{sedeController.sede.departamento.codDepartamento}" 
+				 		effect="fold">
+							<p:ajax event="change" update="cboprovincia" listener="#{sedeController.cargarProvincias}"/>
+							<f:selectItem itemValue="0" itemLabel="Seleccione Departamento"/>
+							<f:selectItems value="#{sedeController.listadoDepartamento}" var="e"
+								itemValue="#{e.codDepartamento}" itemLabel="#{e.nombreDepartamento}"/>						
+						</p:selectOneMenu>
+						<h:outputLabel value="Provincia" />
+				 		<p:selectOneMenu id="cboprovincia" 
+				 		value="#{sedeController.sede.provincia.id.codProvincia}" 
+				 		effect="fold">
+							<f:selectItem itemValue="0" itemLabel="Seleccione Provincia"/>
+							<f:selectItems value="#{sedeController.listadoProvincia}" var="e"
+								itemValue="#{e.id.codProvincia}" itemLabel="#{e.nombreProvincia}"/>						
+						</p:selectOneMenu>
+				 		<h:outputLabel value="Capacidad:" />
+				 		<p:inputText 
+				 			value="#{sedeController.sede.capacidad}"
+				 			required="true" requiredMessage="Nombre obligatorio"/>	 
+				 		 <f:facet name="footer">
+				 		 	<p:commandButton value="Grabar"  
+				 		 		action="#{sedeController.registrarSede}"
+				 		 		oncomplete="if (!args.validationFailed)  PF('wRegistrar').hide()"
+				 		 		update=":frmLista:idLista"/>
+				 		 </f:facet>	 	
+				 		</p:panelGrid>
+				 	</p:fieldset>
+				 </h:form>		
+		</p:dialog>
+		<!-- dialogo para actualizar usuario -->
+		<p:dialog header="Actualizar Sede" modal="true" 
+				widgetVar="wActualizar" id="idActualizar">
+				 	<h:form>
+				 	<p:growl  autoUpdate="true" showDetail="true"/>
+				 	<p:fieldset legend="Actualizar Sede">
+				 		<p:panelGrid columns="2">
+				 		<h:outputLabel value="Codigo" />
+				 		<p:inputText
+				 			value="#{sedeController.sede.codSede}" readonly="true"
+				 			required="true" requiredMessage="Clave Obligatoria"/>
+				 		<h:outputLabel value="Nombre:" />
+				 		<p:inputText 
+				 			value="#{sedeController.sede.nombre}"
+				 			required="true" requiredMessage="Nombre obligatorio"/>
+				 		<h:outputLabel value="Departamento" />
+				 		<p:selectOneMenu value="#{sedeController.sede.departamento.codDepartamento}" 
+				 		effect="fold">
+							<p:ajax event="change" update="cboprovincia" listener="#{sedeController.cargarProvincias}"/>
+							<f:selectItem itemValue="0" itemLabel="Seleccione Departamento"/>
+							<f:selectItems value="#{sedeController.listadoDepartamento}" var="e"
+								itemValue="#{e.codDepartamento}" itemLabel="#{e.nombreDepartamento}"/>						
+						</p:selectOneMenu>
+						<h:outputLabel value="Provincia" />
+				 		<p:selectOneMenu id="cboprovincia" 
+				 		value="#{sedeController.sede.provincia.id.codProvincia}" 
+				 		effect="fold">
+							<f:selectItem itemValue="0" itemLabel="Seleccione Provincia"/>
+							<f:selectItems value="#{sedeController.listadoProvincia}" var="e"
+								itemValue="#{e.id.codProvincia}" itemLabel="#{e.nombreProvincia}"/>						
+						</p:selectOneMenu>
+				 		<h:outputLabel value="Capacidad:" />
+				 		<p:inputText 
+				 			value="#{sedeController.sede.capacidad}"
+				 			required="true" requiredMessage="Nombre obligatorio"/>	 
+				 		 <f:facet name="footer">
+				 		 	<p:commandButton value="Grabar"  
+				 		 		action="#{sedeController.actualizarSede}"
+				 		 		oncomplete="if (!args.validationFailed)  PF('wActualizar').hide()"
+				 		 		update=":frmLista:idLista"/>
+				 		 </f:facet>	 	
+				 		</p:panelGrid>
+				 	</p:fieldset>
+				 </h:form>	
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+</html>
