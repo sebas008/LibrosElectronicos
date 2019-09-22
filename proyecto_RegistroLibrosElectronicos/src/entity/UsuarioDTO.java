@@ -1,7 +1,14 @@
 package entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="usuarios")
 public class UsuarioDTO {
 	
+	@Id
 	private String cod_usu;
 	private String clave_usu;
 	

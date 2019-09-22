@@ -1,8 +1,16 @@
 package entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tiporetencion")
 public class TblTipoRet {
 
-	private String codigo, descripcion;
+	@Id
+	private String codigo;
+	private String descripcion;
 	private int tasa;
 	private double valor;
 

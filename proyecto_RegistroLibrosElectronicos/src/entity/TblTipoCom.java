@@ -1,8 +1,17 @@
 package entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tipocompra")
+
 public class TblTipoCom {
 
-	private String codigo, descripcion;
+	@Id
+	private String codigo; 
+	private String descripcion;
 
 	public String getCodigo() {
 		return codigo;

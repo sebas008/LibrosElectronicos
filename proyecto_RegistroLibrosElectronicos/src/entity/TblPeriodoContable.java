@@ -1,8 +1,16 @@
 package entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="periodoContable")
 public class TblPeriodoContable {
 
-	private String codPerdiodo, desPeriodo;
+	@Id
+	private String codPerdiodo; 
+	private String desPeriodo;
 
 	public String getCodPerdiodo() {
 		return codPerdiodo;

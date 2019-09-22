@@ -1,8 +1,16 @@
 package entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="moneda")
 public class TblMoneda {
 
-	private String codigo, descripcion;
+	@Id
+	private String codigo; 
+	private String descripcion;
 
 	public String getCodigo() {
 		return codigo;
