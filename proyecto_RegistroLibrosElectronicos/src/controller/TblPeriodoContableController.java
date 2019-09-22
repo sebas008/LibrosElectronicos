@@ -10,7 +10,7 @@ import javax.faces.component.UIData;
 import entity.TblPeriodoContable;
 import modelo.ModeloTblPeriodoContable;
 
-@ManagedBean(name="tblMonedaController")
+@ManagedBean(name="tblPeriodoContableController")
 @ViewScoped
 public class TblPeriodoContableController {
 
