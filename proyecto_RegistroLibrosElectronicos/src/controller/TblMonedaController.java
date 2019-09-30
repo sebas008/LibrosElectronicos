@@ -48,6 +48,16 @@ public class TblMonedaController {
 		this.listadoTblMoneda = listadoTblMoneda;
 	}
 	 
+	public void registrarMoneda() {
+		tblMoneda.getCodigo();
+		new ModeloTblMoneda().insertarTblMoneda(tblMoneda);
+		cargarTable();
+	}
 	
+	public void actualizarMoneda() {
+		tblMoneda.getCodigo();
+		new ModeloTblMoneda().actualizarTblMoneda(tblMoneda);
+		cargarTable();
+	}
 	
 }
