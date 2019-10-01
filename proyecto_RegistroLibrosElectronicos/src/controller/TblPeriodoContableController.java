@@ -47,6 +47,17 @@ public class TblPeriodoContableController {
 		this.dtFila = dtFila;
 	}
 
+	public void registrarPeriodoContable() {
+		tblPeriodoContable.getCodPerdiodo();
+		new ModeloTblPeriodoContable().insertarTblPeriodoContable(tblPeriodoContable);
+		cargarTable();
+	}
+	
+	public void actualizarPeriodoContable() {
+		tblPeriodoContable.getCodPerdiodo();
+		new ModeloTblPeriodoContable().actualizarTblPeriodoContable(tblPeriodoContable);
+		cargarTable();
+	}
 	
 	
 }

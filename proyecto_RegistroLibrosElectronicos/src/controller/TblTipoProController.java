@@ -48,4 +48,18 @@ public class TblTipoProController {
 		this.dtFila = dtFila;
 	}
 	
+	
+	public void registrarTipoProveedor() {
+		tblTipoPro.getCodigo();
+		new ModeloTblTipoPro().insertarTblTipoPro(tblTipoPro);
+		cargarTable();
+	}
+	
+	public void ActualizarTipoProveedor() {
+		tblTipoPro.getCodigo();
+		new ModeloTblTipoPro().actualizarTblTipoPro(tblTipoPro);
+		cargarTable();
+	}
+	
+	
 }

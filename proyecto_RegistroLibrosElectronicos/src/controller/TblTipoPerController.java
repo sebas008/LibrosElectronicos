@@ -48,5 +48,17 @@ public class TblTipoPerController {
 		this.dtFila = dtFila;
 	}
 	
+	public void registrarTipoPersona() {
+		tblTipoPer.getCodigo();
+		new ModeloTblTipoPer().insertarTblTipoPer(tblTipoPer);
+		cargarTable();
+	}
+	
+	public void ActualizarTipoPersona() {
+		tblTipoPer.getCodigo();
+		new ModeloTblTipoPer().actualizarTblTipoPer(tblTipoPer);
+		cargarTable();
+	}
+	
 	
 }

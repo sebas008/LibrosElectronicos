@@ -49,4 +49,18 @@ public class TblTipoRetController {
 	}
 	
 	
+	public void registrarTipoRetencion() {
+		tblTipoRet.getCodigo();
+		new ModeloTblTipoRet().insertarTblTipoRet(tblTipoRet);
+		cargarTable();
+	}
+	
+	public void ActualizarTipoRetencion() {
+		tblTipoRet.getCodigo();
+		new ModeloTblTipoRet().actualizarTblTipoRet(tblTipoRet);
+		cargarTable();
+	}
+	
+	
+	
 }

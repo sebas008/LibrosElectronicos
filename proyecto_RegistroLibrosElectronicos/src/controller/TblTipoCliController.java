@@ -48,4 +48,16 @@ public class TblTipoCliController {
 			this.dtFila = dtFila;
 		}
 		
+		public void registrarTipoCliente() {
+			tblTipoCli.getCodigo();
+			new ModeloTblTipoCli().insertarTblTipoCli(tblTipoCli);
+			cargarTable();
+		}
+		
+		public void actualizarTipoCliente() {
+			tblTipoCli.getCodigo();
+			new ModeloTblTipoCli().actualizarTblTipoCli(tblTipoCli);
+			cargarTable();
+		}
+		
 }

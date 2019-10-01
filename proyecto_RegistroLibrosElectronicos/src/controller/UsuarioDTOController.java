@@ -48,5 +48,18 @@ public class UsuarioDTOController {
 		this.dtFila = dtFila;
 	}
 
+	public void registrarUsuario() {
+		usuarioDTO.getCod_usu();
+		new ModeloUsuarioDTO().insertarUsuarioDTO(usuarioDTO);
+		cargarTable();
+	}
+	
+	public void ActualizarUsuario() {
+		usuarioDTO.getCod_usu();
+		new ModeloUsuarioDTO().actualizarUsuarioDTO(usuarioDTO);
+		cargarTable();
+	}
+	
+	
 	
 }

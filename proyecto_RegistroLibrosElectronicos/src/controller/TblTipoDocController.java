@@ -48,5 +48,17 @@ public class TblTipoDocController {
 		this.dtFila = dtFila;
 	}
 	
+	public void registrarTipoDocumento() {
+		tblTipoDoc.getCodigo();
+		new ModeloTblTipoDoc().insertarTblTipoDoc(tblTipoDoc);
+		cargarTable();
+	}
+	
+	public void ActualizarTipoDocumento() {
+		tblTipoDoc.getCodigo();
+		new ModeloTblTipoDoc().actualizarTblTipoDoc(tblTipoDoc);
+		cargarTable();
+	}
+	
 	
 }

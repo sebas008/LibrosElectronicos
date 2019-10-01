@@ -49,4 +49,17 @@ public class TblTipoComController {
 		this.dtFila = dtFila;
 	}
 	
+	public void registrarTipoCompra() {
+		tblTipoCom.getCodigo();
+		new ModeloTblTipoCom().insertarTblTipoCom(tblTipoCom);
+		cargarTable();
+	}
+	
+	public void actualizarTipoCompra() {
+		tblTipoCom.getCodigo();
+		new ModeloTblTipoCom().actualizarTblTipoCom(tblTipoCom);
+		cargarTable();
+	}
+	
+	
 }

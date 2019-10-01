@@ -64,6 +64,25 @@ public class ModeloTblMoneda {
 			factory.close();
 		}
 	}
+	
+	public void eliminarTblMoneda(String tblMoneda){
+		EntityManager manager=factory.createEntityManager();
+				
+				try {
+					TblMoneda tipoMoneda=manager.find(TblMoneda.class, tblMoneda);
+					manager.getTransaction().begin();
+					manager.remove(tipoMoneda);
+					manager.getTransaction().commit();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					manager.getTransaction().rollback();
+					System.out.println(e.getMessage());
+				}finally{
+					manager.close();
+					factory.close();
+				}
+			}
+
 
 	private void insertarSql(TblMoneda tblMoneda, EntityManager entityManager) {
 		Query query = entityManager.createNativeQuery("insert into moneda (cod_mo, des_mo) " +
