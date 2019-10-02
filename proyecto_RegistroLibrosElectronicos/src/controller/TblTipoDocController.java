@@ -54,11 +54,15 @@ public class TblTipoDocController {
 		cargarTable();
 	}
 	
-	public void ActualizarTipoDocumento() {
+	public void actualizarTipoDocumento() {
 		tblTipoDoc.getCodigo();
 		new ModeloTblTipoDoc().actualizarTblTipoDoc(tblTipoDoc);
 		cargarTable();
 	}
 	
+	public void eliminarTipoDocumento() {
+		new ModeloTblTipoDoc().eliminarTblTipoDoc(tblTipoDoc.getCodigo());
+		cargarTable();
+	}
 	
 }

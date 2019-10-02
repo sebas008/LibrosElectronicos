@@ -54,9 +54,14 @@ public class TblTipoPerController {
 		cargarTable();
 	}
 	
-	public void ActualizarTipoPersona() {
+	public void actualizarTipoPersona() {
 		tblTipoPer.getCodigo();
 		new ModeloTblTipoPer().actualizarTblTipoPer(tblTipoPer);
+		cargarTable();
+	}
+
+	public void eliminarTipoPersona() {
+		new ModeloTblTipoPer().eliminarTblTipoPer(tblTipoPer.getCodigo());
 		cargarTable();
 	}
 	

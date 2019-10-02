@@ -59,5 +59,9 @@ public class TblPeriodoContableController {
 		cargarTable();
 	}
 	
+	public void eliminarPeriodoContable() {
+		new ModeloTblPeriodoContable().eliminarTblPeriodoContable(tblPeriodoContable.getCodPerdiodo());
+		cargarTable();
+	}
 	
 }

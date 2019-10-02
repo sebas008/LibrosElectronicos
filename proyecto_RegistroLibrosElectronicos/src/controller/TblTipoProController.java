@@ -55,11 +55,15 @@ public class TblTipoProController {
 		cargarTable();
 	}
 	
-	public void ActualizarTipoProveedor() {
+	public void actualizarTipoProveedor() {
 		tblTipoPro.getCodigo();
 		new ModeloTblTipoPro().actualizarTblTipoPro(tblTipoPro);
 		cargarTable();
 	}
 	
+	public void eliminarTipoProveedor() {
+		new ModeloTblTipoPro().eliminarTblTipoPro(tblTipoPro.getCodigo());
+		cargarTable();
+	}
 	
 }

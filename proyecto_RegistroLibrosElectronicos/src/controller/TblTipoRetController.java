@@ -55,12 +55,16 @@ public class TblTipoRetController {
 		cargarTable();
 	}
 	
-	public void ActualizarTipoRetencion() {
+	public void actualizarTipoRetencion() {
 		tblTipoRet.getCodigo();
 		new ModeloTblTipoRet().actualizarTblTipoRet(tblTipoRet);
 		cargarTable();
 	}
 	
+	public void eliminarTipoRetencion() {
+		new ModeloTblTipoRet().eliminarTblTipoRet(tblTipoRet.getCodigo());
+		cargarTable();
+	}
 	
 	
 }

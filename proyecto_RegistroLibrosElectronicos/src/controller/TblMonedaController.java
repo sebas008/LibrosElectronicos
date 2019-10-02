@@ -60,4 +60,9 @@ public class TblMonedaController {
 		cargarTable();
 	}
 	
+	public void eliminarMoneda() {
+		new ModeloTblMoneda().eliminarTblMoneda(tblMoneda.getCodigo());
+		cargarTable();
+	}
+	
 }

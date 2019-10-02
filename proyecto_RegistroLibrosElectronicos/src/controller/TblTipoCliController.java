@@ -60,4 +60,10 @@ public class TblTipoCliController {
 			cargarTable();
 		}
 		
+		
+		public void eliminarTipoCliente() {
+			new ModeloTblTipoCli().eliminarTblTipoCli(tblTipoCli.getCodigo());
+			cargarTable();
+		}
+		
 }

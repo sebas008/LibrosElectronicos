@@ -54,9 +54,14 @@ public class UsuarioDTOController {
 		cargarTable();
 	}
 	
-	public void ActualizarUsuario() {
+	public void actualizarUsuario() {
 		usuarioDTO.getCod_usu();
 		new ModeloUsuarioDTO().actualizarUsuarioDTO(usuarioDTO);
+		cargarTable();
+	}
+	
+	public void eliminarUsuario() {
+		new ModeloUsuarioDTO().eliminarUsuarioDTO(usuarioDTO.getCod_usu());
 		cargarTable();
 	}
 	

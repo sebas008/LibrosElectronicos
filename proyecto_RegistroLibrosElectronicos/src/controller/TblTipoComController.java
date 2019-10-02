@@ -61,5 +61,9 @@ public class TblTipoComController {
 		cargarTable();
 	}
 	
+	public void eliminarTipoCompra() {
+		new ModeloTblTipoCom().eliminarTblTipoCom(tblTipoCom.getCodigo());
+		cargarTable();
+	}
 	
 }
