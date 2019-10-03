@@ -80,7 +80,7 @@ public class ModeloTblEstadoDoc {
 	
 	
 
-	
+	jj
 	
 	
 	private void insertarSql(TblEstadoDoc tblEstadoDoc, EntityManager entityManager) {
