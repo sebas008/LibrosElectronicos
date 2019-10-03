@@ -3,14 +3,13 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import com.sun.faces.util.Cache.Factory;
 
 import entity.TblEstadoDoc;
 
@@ -77,12 +76,7 @@ public class ModeloTblEstadoDoc {
 		
 		
 	}
-	
-	
 
-	jj
-	
-	
 	private void insertarSql(TblEstadoDoc tblEstadoDoc, EntityManager entityManager) {
 		
 		
@@ -98,6 +92,6 @@ public class ModeloTblEstadoDoc {
 	
 	
 	
-	private void actualizar() {}
+	//private void actualizar() {}
 
 }
