@@ -1,4 +1,4 @@
 <% 
-    response.sendRedirect("./ui/libro.jsf");
+    response.sendRedirect("./ui/usuario.jsf");
     return;
 %>

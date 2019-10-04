@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 //notaciones
-@Entity
+//@Entity
 @Table(name="condicionpago")
 public class TblCondPago {
 

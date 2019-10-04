@@ -9,43 +9,34 @@
 	<ui:define name="content">
 	 <h:form id="frmLista">
 	 	<p:commandButton value="Nuevo Usuario"
-	 		action="#{usuarioController.nuevoUsuario}" 
+	 		action="#{usuarioDTOController.registrarUsuario}" 
 	 		oncomplete="PF('wRegistrar').show()"
 	 		update=":idRegistrar"/>
 	 
-		<p:dataTable value="#{usuarioController.listadoUsuario}" 
+		<p:dataTable value="#{usuarioDTOController.listadoUsuarioDTO}" 
 			var="row" id="idLista"
-			rowKey="#{row.usuario}" selectionMode="single" 
+			rowKey="#{row.cod_usu}" selectionMode="single" 
 			rows="10"
             paginator="true"
             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
                             					{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			binding="#{usuarioController.dtFila}">
+			binding="#{usuarioDTOController.dtFila}">
 			<p:column headerText="Login" style="width:50px">
-				<h:outputLabel value="#{row.usuario}" />			
+							<h:outputLabel value="#{row.cod_usu}"/>				
 			</p:column>
-			<p:column headerText="Nombre">
-				<h:outputLabel value="#{row.nombre}"/>			
-			</p:column>
-			<p:column headerText="Apellido">
-				<h:outputLabel value="#{row.apellido}"/>			
+			<p:column headerText="Contraseña">
+			<h:outputLabel value="#{row.clave_usu}"/>	
 			</p:column>
 			
-			<p:column headerText="Ultimo Acceso" style="width:200px">
-				<h:outputLabel value="#{row.facceso}">
-				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>			
-			</h:outputLabel>
-		
-			</p:column>
 			<p:column headerText="">
 				<p:commandButton icon="fa fa-fw fa-edit"  
-					action="#{usuarioController.seleccionar}"
+					action="#{usuarioDTOController.seleccionar}"
 					oncomplete="PF('wActualizar').show()"
 					update=":idActualizar"/>
 			</p:column>
 			<p:column headerText="">
 				<p:commandButton icon="fa fa-fw fa-remove" 
-					action="#{usuarioController.seleccionar}"
+					action="#{usuarioDTOController.seleccionar}"
 					onclick="PF('cd').show()"/>
 			</p:column>
 			
@@ -53,7 +44,7 @@
 		   <p:confirmDialog message="Seguro de eliminar?" 
 		   		widgetVar="cd">
 		   			<p:commandButton value="Si" 
-		   				action="#{usuarioController.eliminarUsuario}"
+		   				action="#{usuarioDTOController.eliminarUsuario}"
 		   				oncomplete="PF('cd').hide()"
 		   				update="idLista"/>
 		   			<p:commandButton value="No" 
@@ -67,25 +58,19 @@
 				 	<p:growl  autoUpdate="true" showDetail="true"/>
 				 	<p:fieldset legend="Registrar Usuario">
 				 		<p:panelGrid columns="2">
-				 		<h:outputLabel value="Clave" />
-				 		<p:password 
-				 			value="#{usuarioController.usuario.clave}"
-				 			required="true" requiredMessage="Clave Obligatoria"/>
-				 		<h:outputLabel value="Nombre:" />
 				 		<p:inputText 
-				 			value="#{usuarioController.usuario.usuario}"
-				 			required="true" requiredMessage="Nombre obligatorio"/>
-				 		
-				 		<h:outputLabel value="Apellido" />
+				 			value="#{usuarioDTOController.usuarioDTO.clave_usu}"
+				 			required="true" requiredMessage="Clave obligatoria"/>
+				 		<h:outputLabel value="Usuario" />
 				 		<p:password 
-				 			value="#{usuarioController.usuario.apellido}"
-				 			required="true" requiredMessage="Apellido Obligatorio"/>
-				 		<h:outputLabel value="Fecha Acceso:" />
-				 		<p:calendar  showOn="button" pattern="yyyy-MM-dd" locale="es"
-				 		 value="#{usuarioController.usuario.facceso}"/>
+				 			value="#{usuarioDTOController.usuarioDTO.cod_usu}"
+				 			required="true" requiredMessage="Usuario Obligatorio"/>
+				 		<h:outputLabel value="Contraseña:" />
+				 		
+
 				 		 <f:facet name="footer">
 				 		 	<p:commandButton value="Grabar"  
-				 		 		action="#{usuarioController.registrarUsuario}"
+				 		 		action="#{usuarioDTOController.registrarUsuario}"
 				 		 		oncomplete="if (!args.validationFailed)  PF('wRegistrar').hide()"
 				 		 		update=":frmLista:idLista"/>
 				 		 </f:facet>	 	
@@ -99,27 +84,19 @@
 				 <h:form>
 				 	<p:growl  autoUpdate="true" showDetail="true"/>
 				 	<p:fieldset legend="Actualizar Usuario">
-				 		<p:panelGrid columns="2">
-				 		<h:outputLabel value="Clave" />
-				 		<p:password 
-				 			value="#{usuarioController.usuario.clave}"
-				 			required="true" requiredMessage="Clave Obligatoria"/>
-				 		<h:outputLabel value="Nombre:" />
+				 			<p:panelGrid columns="2">
 				 		<p:inputText 
-				 			value="#{usuarioController.usuario.usuario}"
-				 			required="true" requiredMessage="Nombre obligatorio"/>
-				 		
-				 		<h:outputLabel value="Apellido" />
+				 			value="#{usuarioDTOController.usuarioDTO.cod_usu}"
+				 			required="true" requiredMessage="Clave obligatoria"/>
+				 		<h:outputLabel value="Usuario" />
 				 		<p:password 
-				 			value="#{usuarioController.usuario.apellido}"
-				 			required="true" requiredMessage="Apellido Obligatorio"/>
-				 		<h:outputLabel value="Fecha Acceso:" />
-				 		<p:calendar  showOn="button" pattern="yyyy-MM-dd" locale="es"
-				 		 value="#{usuarioController.usuario.facceso}"/>
+				 			value="#{usuarioDTOController.usuarioDTO.clave_usu}"
+				 			required="true" requiredMessage="Usuario Obligatorio"/>
+				 		<h:outputLabel value="Contraseña:" />
 				 		
 				 		 <f:facet name="footer">
 				 		 	<p:commandButton value="Actualizar"  
-				 		 		action="#{usuarioController.actualizarUsuario}"
+				 		 		action="#{usuarioDTOController.actualizarUsuario}"
 				 		 		oncomplete="if (!args.validationFailed)  PF('wActualizar').hide()"
 				 		 		update=":frmLista:idLista"/>
 				 		 </f:facet>	 	

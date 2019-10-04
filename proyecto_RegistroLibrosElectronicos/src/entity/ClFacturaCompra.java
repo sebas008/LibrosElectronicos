@@ -1,16 +1,36 @@
 package entity;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name="facturaCompra")
 public class ClFacturaCompra {
 	
-	private String periodo, moneda, fecha, tipoDoc, serieDoc, numDoc, cod_Pro, razonS_Pro, cod_Re, des_Re, glosa_Compra,
-			cod_estado, des_estado, fechaRet, nroRet, codcom, desCodcom;
-	private double tipoCambio, valorVenta, valorInafecto, igv, total, montoRet;
+	@EmbeddedId
+	private ClFacturaCompraID id;
+	private String periodo;
+	private String moneda; 
+	private String fecha; 
+	private String tipoDoc;
+	private String razonS_Pro; 
+	private String cod_Re; 
+	private String des_Re; 
+	private String glosa_Compra;
+    private String cod_estado; 
+    private String des_estado; 
+    private String fechaRet; 
+    private String nroRet; 
+    private String codcom; 
+    private String desCodcom;
+	private double tipoCambio; 
+	private double valorVenta; 
+	private double valorInafecto; 
+	private double igv;
+	private double total;
+	private double montoRet;
+	
 
 	public String getFechaRet() {
 		return fechaRet;
@@ -94,29 +114,6 @@ public class ClFacturaCompra {
 		this.tipoDoc = tipoDoc;
 	}
 
-	public String getSerieDoc() {
-		return serieDoc;
-	}
-
-	public void setSerieDoc(String serieDoc) {
-		this.serieDoc = serieDoc;
-	}
-
-	public String getNumDoc() {
-		return numDoc;
-	}
-
-	public void setNumDoc(String numDoc) {
-		this.numDoc = numDoc;
-	}
-
-	public String getCod_Pro() {
-		return cod_Pro;
-	}
-
-	public void setCod_Pro(String cod_Pro) {
-		this.cod_Pro = cod_Pro;
-	}
 
 	public String getRazonS_Pro() {
 		return razonS_Pro;
@@ -206,4 +203,12 @@ public class ClFacturaCompra {
 		this.tasa_re = tasa_re;
 	}
 
+	public ClFacturaCompraID getId() {
+		return id;
+	}
+
+	public void setId(ClFacturaCompraID id) {
+		this.id = id;
+	}
+	
 }

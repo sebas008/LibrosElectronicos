@@ -6,10 +6,7 @@
 		<!-- Proveedor JPA -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<!-- Entidades (Clases) -->
-			<class>edu.cibertec.entity.Usuario</class>
-			<class>edu.cibertec.entity.Sede</class>
-			<class>edu.cibertec.entity.Editorial</class>
-			<class>edu.cibertec.entity.Libro</class>
+			<class>edu.cibertec.entity.UsuarioDTO</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bd_LibrosElectronicos" />

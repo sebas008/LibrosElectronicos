@@ -1,17 +1,30 @@
 package entity;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name="facturaVenta")
 
 public class ClFacturaVenta {
-	@Id
-	private String periodo, moneda, fecha, tipoDoc, serieDoc, numDoc, cod_Cli, razonS_Cli, cod_Re, des_Re, glosa_venta,
-			cod_estado, des_estado;
-	private double tipoCambio, valorVenta, valorInafecto, igv, total;
+	@EmbeddedId
+	private ClFacturaVentaID id;
+	private String periodo; 
+	private String moneda;
+	private String fecha;
+	private String tipoDoc;
+	private String razonS_Cli;	
+	private String cod_Re;	
+	private String des_Re;	
+	private String glosa_venta;
+	private String cod_estado;
+	private String des_estado;
+	private double tipoCambio;
+	private double valorVenta;
+	private double valorInafecto;
+	private double igv;
+	private double total;
 	private int tasa_re;
 
 	public String getPeriodo() {
@@ -54,28 +67,14 @@ public class ClFacturaVenta {
 		this.tipoDoc = tipoDoc;
 	}
 
-	public String getSerieDoc() {
-		return serieDoc;
+	
+	
+	public ClFacturaVentaID getId() {
+		return id;
 	}
 
-	public void setSerieDoc(String serieDoc) {
-		this.serieDoc = serieDoc;
-	}
-
-	public String getNumDoc() {
-		return numDoc;
-	}
-
-	public void setNumDoc(String numDoc) {
-		this.numDoc = numDoc;
-	}
-
-	public String getCod_Cli() {
-		return cod_Cli;
-	}
-
-	public void setCod_Cli(String cod_Cli) {
-		this.cod_Cli = cod_Cli;
+	public void setId(ClFacturaVentaID id) {
+		this.id = id;
 	}
 
 	public String getRazonS_Cli() {
