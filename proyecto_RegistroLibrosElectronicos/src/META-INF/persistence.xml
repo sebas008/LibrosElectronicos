@@ -7,6 +7,20 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<!-- Entidades (Clases) -->
 			<class>edu.cibertec.entity.UsuarioDTO</class>
+			<class>edu.cibertec.entity.ClFacturaCompra</class>
+			<class>edu.cibertec.entity.ClFacturaVenta</class>
+			<class>edu.cibertec.entity.MntCliente</class>
+			<class>edu.cibertec.entity.MntProveedor</class>
+			<class>edu.cibertec.entity.TblCondPago</class>
+			<class>edu.cibertec.entity.TblEstadoDoc</class>
+			<class>edu.cibertec.entity.TblMoneda</class>
+			<class>edu.cibertec.entity.TblPeriodoContable</class>
+			<class>edu.cibertec.entity.TblTipoCli</class>
+			<class>edu.cibertec.entity.TblTipoCom</class>
+			<class>edu.cibertec.entity.TblTipoDoc</class>
+			<class>edu.cibertec.entity.TblTipoPer</class>
+			<class>edu.cibertec.entity.TblTipoPro</class>
+			<class>edu.cibertec.entity.TblTipoRet</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bd_LibrosElectronicos" />

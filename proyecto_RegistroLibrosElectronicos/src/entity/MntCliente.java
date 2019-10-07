@@ -6,7 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-//@Entity
+@Entity
 @Table(name="cliente")
 public class MntCliente {
 	@Id
@@ -16,6 +16,15 @@ public class MntCliente {
 	private String contacto; 
 	private String telefono;
 	private String correo;
+	private String razonSocial;
+
+	public String getRazonSocial() {
+		return razonSocial;
+	}
+
+	public void setRazonSocial(String razonSocial) {
+		this.razonSocial = razonSocial;
+	}
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name="tblTipoPer",referencedColumnName="cod_pe")

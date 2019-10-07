@@ -4,7 +4,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-//@Entity
+@Entity
 @Table(name="facturaVenta")
 
 public class ClFacturaVenta {

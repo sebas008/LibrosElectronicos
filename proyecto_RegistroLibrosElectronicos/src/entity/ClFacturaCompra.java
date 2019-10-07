@@ -1,27 +1,44 @@
 package entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//@Entity
+@Entity
 @Table(name="facturaCompra")
 public class ClFacturaCompra {
 	
 	@EmbeddedId
 	private ClFacturaCompraID id;
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
+			mappedBy="periodoContable")
 	private String periodo;
-	private String moneda; 
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
+			mappedBy="moneda")
+	private String moneda;
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
+			mappedBy="tipoCambio")
 	private String fecha; 
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
+			mappedBy="tipoDocumento")
 	private String tipoDoc;
-	private String razonS_Pro; 
+	private String razonS_Pro;
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
+			mappedBy="tipoRetencion")
 	private String cod_Re; 
 	private String des_Re; 
 	private String glosa_Compra;
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
+			mappedBy="estadoDoc")
     private String cod_estado; 
-    private String des_estado; 
+    private String des_estado;    
     private String fechaRet; 
-    private String nroRet; 
+    private String nroRet;
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
+			mappedBy="tipoCompra")
     private String codcom; 
     private String desCodcom;
 	private double tipoCambio; 
