@@ -19,6 +19,7 @@ public class MntProveedor {
 	private String contacto; 
 	private String telefono;
 	private String correo;
+	private String razonSocial;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name="tblTipoPer",referencedColumnName="cod_pe")
@@ -95,6 +96,22 @@ public class MntProveedor {
 
 	public void setTblCondPago(TblCondPago tblCondPago) {
 		this.tblCondPago = tblCondPago;
+	}
+
+	public String getRazonSocial() {
+		return razonSocial;
+	}
+
+	public void setRazonSocial(String razonSocial) {
+		this.razonSocial = razonSocial;
+	}
+
+	public TblTipoPro getTblTipoPro() {
+		return tblTipoPro;
+	}
+
+	public void setTblTipoPro(TblTipoPro tblTipoPro) {
+		this.tblTipoPro = tblTipoPro;
 	}
 
 }
