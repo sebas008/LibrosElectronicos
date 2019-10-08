@@ -19,8 +19,8 @@ public class ModeloMntCliente {
 	EntityManagerFactory factory=Persistence.createEntityManagerFactory("PE");
 	
 	public List<MntCliente>listarCliente(){
-		EntityManager manager=factory.createEntityManager();
 		List<MntCliente>listadoCliente=new ArrayList<>();
+		EntityManager manager=factory.createEntityManager();
 		TypedQuery<MntCliente>resultado=null;
 		try {
 			String hql="Select c from MntCliente c";
@@ -39,14 +39,13 @@ public class ModeloMntCliente {
 	
 	
 	
-	public List<TblCondPago>listarCondicionPago(TblCondPago tblCondPago){
-		EntityManager manager=factory.createEntityManager();
+	public List<TblCondPago>listarCondicionPago(){
 		List<TblCondPago>listadoCondicionPago=new ArrayList<>();
+		EntityManager manager=factory.createEntityManager();
 		TypedQuery<TblCondPago>resultado=null;
+		String hql="Select cp TblCondPago cp.codigo.condicionPago=?1";
 		try {
-			String hql="Select cp TblCondPago cp.codigo.condicionPago=?1";
 			resultado=manager.createQuery(hql,TblCondPago.class);
-			resultado.setParameter(1, tblCondPago.getCodigo());
 			listadoCondicionPago=resultado.getResultList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -57,14 +56,13 @@ public class ModeloMntCliente {
 		}
 		return listadoCondicionPago;
 	}
-	public List<TblTipoCli>listarTipoCliente(TblTipoCli tblTipoCli){
+	public List<TblTipoCli>listarTipoCliente(){
 		EntityManager manager=factory.createEntityManager();
 		List<TblTipoCli>listadoTipoCliente=new ArrayList<>();
 		TypedQuery<TblTipoCli>resultado=null;
+		String hql="Select tc from TblTipoCli tc where tc.codigo.tipo_cli=?1";
 		try {
-			String hql="Select tc from TblTipoCli tc where tc.codigo.tipo_cli=?1";
 			resultado=manager.createQuery(hql,TblTipoCli.class);
-			resultado.setParameter(1, tblTipoCli.getCodigo());
 			listadoTipoCliente=resultado.getResultList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -75,14 +73,13 @@ public class ModeloMntCliente {
 		}
 		return listadoTipoCliente;
 		}
-	public List<TblTipoPer>listarTipoPersona(TblTipoPer tblTipoPer){
-		EntityManager manager=factory.createEntityManager();
+	public List<TblTipoPer>listarTipoPersona(){
 		List<TblTipoPer>listadoTipoPersona=new ArrayList<>();
+		EntityManager manager=factory.createEntityManager();
 		TypedQuery<TblTipoPer>resultado=null;
+		String hql="Select tp from TblTipoPer tp where tp.cod_cli.cod_pe=?1";
 		try {
-			String hql="Select tp from TblTipoPer tp where tp.cod_cli.cod_pe=?1";
 			resultado=manager.createQuery(hql,TblTipoPer.class);
-			resultado.setParameter(1, tblTipoPer.getCodigo());
 			listadoTipoPersona=resultado.getResultList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -95,11 +92,11 @@ public class ModeloMntCliente {
 		}
 
 	
-	public void insertarSede(MntCliente cliente){
+	public void insertarCliente(MntCliente mntcliente){
 		EntityManager manager=factory.createEntityManager();
 		try {
 			manager.getTransaction().begin();
-			insertarSql(cliente, manager);
+			insertarSql(mntcliente, manager);
 			manager.getTransaction().commit();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -110,11 +107,11 @@ public class ModeloMntCliente {
 			factory.close();
 		}
 	}
-	public void actualizarSede(MntCliente cliente) {
+	public void actualizarCliente(MntCliente mntcliente) {
 		EntityManager manager=factory.createEntityManager();
 		try {
 			manager.getTransaction().begin();
-			manager.merge(cliente);
+			manager.merge(mntcliente);
 			manager.getTransaction().commit();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -125,7 +122,7 @@ public class ModeloMntCliente {
 			factory.close();
 		}
 	}
-		public void eliminarMntCliente(String mntCliente){
+		public void eliminarCliente(String mntCliente){
 			EntityManager manager=factory.createEntityManager();
 					
 					try {
@@ -158,5 +155,7 @@ public class ModeloMntCliente {
 	        query.setParameter(6, mntCliente.getCorreo());
 	        query.executeUpdate();
 	}
+
+
 
 }

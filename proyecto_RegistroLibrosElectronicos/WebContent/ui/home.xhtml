@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="../templates/uiConMenu.xhtml">
+	<ui:define name="content">
+	 <h:form id="frmLista">
+	 	<p:commandButton value="Nuevo Libro"
+	 		action="#{libroController.nuevoLibro}" 
+	 		oncomplete="PF('wRegistrar').show()"
+	 		update=":idRegistrar"/>
+	 		
+		<p:dataTable value="#{libroController.listadoLibro}" 
+			var="row" id="idLista"
+			rowKey="#{row.codlibro}" selectionMode="single" 
+			rows="10"
+            paginator="true"
+            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                            					{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			binding="#{libroController.dtTable}">
+			<p:column headerText="Codigo" style="width:50px">
+				<h:outputLabel value="#{row.codlibro}" />			
+			</p:column>
+			<p:column headerText="Titulo">
+				<h:outputLabel value="#{row.nombre}"/>			
+			</p:column>
+			<p:column headerText="Autor">
+				<h:outputLabel value="#{row.autor}"/>			
+			</p:column>
+			<p:column headerText="Cantidad de Hojas">
+				<h:outputLabel value="#{row.canthojas}" />
+			</p:column>
+			<p:column headerText="Stock">
+				<h:outputLabel value="#{row.stock}"/>			
+			</p:column>
+			<p:column headerText="Precio">
+				<h:outputLabel value="#{row.precio}"/>			
+			</p:column>
+			<p:column headerText="Editorial">
+				<h:outputLabel value="#{row.editorial.nombre}"/>			
+			</p:column>
+			<p:column headerText="Año Publicacion">
+				<h:outputLabel value="#{row.anioedicion}"/>			
+			</p:column>
+			<p:column headerText="">
+				<p:commandButton icon="fa fa-fw fa-edit"  
+					action="#{libroController.seleccionar}"
+					oncomplete="PF('wActualizar').show()"
+					update=":idActualizar"/>
+			</p:column>
+			<p:column headerText="">
+				<p:commandButton icon="fa fa-fw fa-remove" 
+					action="#{libroController.seleccionar}"
+					onclick="PF('cd').show()"/>
+			</p:column>
+			
+		   </p:dataTable>
+		</h:form>
+		
+		<!-- dialogo para actualizar Libro -->
+		<p:dialog header="Actualizar Libro" modal="true" 
+				widgetVar="wActualizar" id="idActualizar">
+				 	<h:form>
+				 	<p:growl  autoUpdate="true" showDetail="true"/>
+				 	<p:fieldset legend="Actualizar Libro">
+				 		<p:panelGrid columns="2">
+				 		<h:outputLabel value="Codigo" />
+				 		<p:inputText
+				 			value="#{libroController.libro.codlibro}" readonly="true"
+				 			required="true" requiredMessage="Codigo Obligatorio"/>
+				 		<h:outputLabel value="Titulo:" />
+				 		<p:inputText 
+				 			value="#{libroController.libro.nombre}"
+				 			required="true" requiredMessage="Titulo obligatorio"/>
+				 		<h:outputLabel value="Autor:" />
+				 		<p:inputText 
+				 			value="#{libroController.libro.autor}"
+				 			required="true" requiredMessage="Autor obligatorio"/>
+				 		<h:outputLabel value="Cantidad de Hojas:" />
+				 		<p:inputText 
+				 			value="#{libroController.libro.canthojas}"
+				 			required="true" requiredMessage="Cantidad obligatorio"/>
+				 		<h:outputLabel value="Stock:" />
+				 		<p:inputText 
+				 			value="#{libroController.libro.stock}"
+				 			required="true" requiredMessage="Stock obligatorio"/>
+				 		<h:outputLabel value="Precio:" />
+				 		<p:inputText 
+				 			value="#{libroController.libro.precio}"
+				 			required="true" requiredMessage="Precio obligatorio"/>
+				 		<h:outputLabel value="Editorial" />
+				 		<p:selectOneMenu value="#{libroController.libro.editorial.codeditorial}" 
+				 		effect="fold">
+							<f:selectItem itemValue="0" itemLabel="Seleccione Editorial"/>
+							<f:selectItems value="#{libroController.listadoEditorial}" var="e"
+								itemValue="#{e.codeditorial}" itemLabel="#{e.nombre}"/>						
+						</p:selectOneMenu>	 
+				 		 <f:facet name="footer">
+				 		 	<p:commandButton value="Grabar"  
+				 		 		action="#{libroController.actualizar}"
+				 		 		oncomplete="if (!args.validationFailed)  PF('wActualizar').hide()"
+				 		 		update=":frmLista:idLista"/>
+				 		 </f:facet>	 	
+				 		</p:panelGrid>
+				 	</p:fieldset>
+				 </h:form>	
+		</p:dialog>
+		<!-- dialogo para Nuevo Libro -->
+		<p:dialog header="Nuevo Libro" modal="true" 
+				widgetVar="wRegistrar" id="idRegistrar">
+				 	<h:form>
+				 	<p:growl  autoUpdate="true" showDetail="true"/>
+				 	<p:fieldset legend="Registrar Libro">
+				 		<p:panelGrid columns="2">
+				 		<h:outputLabel value="Codigo" />
+				 		<p:inputText
+				 			value="#{libroController.libro.codlibro}"
+				 			required="true" requiredMessage="Codigo Obligatorio"/>
+				 		<h:outputLabel value="Titulo:" />
+				 		<p:inputText 
+				 			value="#{libroController.libro.nombre}"
+				 			required="true" requiredMessage="Titulo obligatorio"/>
+				 		<h:outputLabel value="Autor:" />
+				 		<p:inputText 
+				 			value="#{libroController.libro.autor}"
+				 			required="true" requiredMessage="Autor obligatorio"/>
+				 		<h:outputLabel value="Cantidad de Hojas:" />
+				 		<p:inputText 
+				 			value="#{libroController.libro.canthojas}"
+				 			required="true" requiredMessage="Cantidad obligatorio"/>
+				 		<h:outputLabel value="Stock:" />
+				 		<p:inputText 
+				 			value="#{libroController.libro.stock}"
+				 			required="true" requiredMessage="Stock obligatorio"/>
+				 		<h:outputLabel value="Precio:" />
+				 		<p:inputText 
+				 			value="#{libroController.libro.precio}"
+				 			required="true" requiredMessage="Precio obligatorio"/>
+				 		<h:outputLabel value="Editorial" />
+				 		<p:selectOneMenu value="#{libroController.libro.editorial.codeditorial}" 
+				 		effect="fold">
+							<f:selectItem itemValue="0" itemLabel="Seleccione Editorial"/>
+							<f:selectItems value="#{libroController.listadoEditorial}" var="e"
+								itemValue="#{e.codeditorial}" itemLabel="#{e.nombre}"/>						
+						</p:selectOneMenu>	 
+				 		 <f:facet name="footer">
+				 		 	<p:commandButton value="Grabar"  
+				 		 		action="#{libroController.ingresar}"
+				 		 		oncomplete="if (!args.validationFailed)  PF('wRegistrar').hide()"
+				 		 		update=":frmLista:idLista"/>
+				 		 </f:facet>	 	
+				 		</p:panelGrid>
+				 	</p:fieldset>
+				 </h:form>	
+		</p:dialog>
+		
+	</ui:define>
+</ui:composition>
+</html>
