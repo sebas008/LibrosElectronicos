@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import entity.MntTipoCambio;
@@ -30,6 +31,70 @@ public class ModeloMntTipoCambio {
 			factory.close();
 		}
 		return listadoTipoCambio;
-	}	
+	}
+	
+	
+	
+	public void insertarTipoCambio(MntTipoCambio mntTipoCambio) {
+		
+		
+		EntityManager manager = factory.createEntityManager();
+		
+		try {
+		
+			manager.getTransaction().begin();
+			insertarSql(mntTipoCambio ,manager);
+			manager.getTransaction().commit();
+			
+			
+		} catch (Exception e) {
+			manager.getTransaction().rollback();
+			System.out.println(e.getMessage());
+			// TODO: handle exception
+		}finally {
+			manager.close();
+			factory.close();
+		}
+		
+	}
+	public void actualizarMntTipoCambio(MntTipoCambio mntTipoCambio) {
+		
+		EntityManager manager = factory.createEntityManager();
+		try {
+			manager.getTransaction().begin();
+			manager.merge(mntTipoCambio);
+			manager.getTransaction().commit();
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			// TODO: handle exception
+		}finally {
+			manager.close();
+			factory.close();
+		}
+		
+	}
+	
+	
+	public void insertarSql(MntTipoCambio mntTipoCambio, EntityManager entityManager) {
+		
+		Query query = entityManager.createNativeQuery("insert into ");
+		
+		query.setParameter(1, mntTipoCambio.getFecha());
+		query.setParameter(2,mntTipoCambio.getCompra());
+		query.setParameter(2, mntTipoCambio.getVenta());
+		query.executeUpdate();
+		
+		
+		
+		
+		
+	}
+	
+	
+	
 	
 }
