@@ -32,31 +32,56 @@ public class TblCondPagoController {
 	}
 	
 	public void seleccionar() {
-		
-		
-				
+		tblCondPago=(TblCondPago)dtFila.getRowData();
 	}
-	
-	public TblCondPago getTblEstadoDoc() {
+	public TblCondPago getTblCondPago() {
 		return tblCondPago;
 	}
+
 	public void setTblCondPago(TblCondPago tblCondPago) {
 		this.tblCondPago = tblCondPago;
 	}
+
 	public List<TblCondPago> getListarTblCondPago() {
 		return listarTblCondPago;
 	}
-	public void setListarTblCondPago(List<TblCondPago> ListarTblCondPago) {
+
+	public void setListarTblCondPago(List<TblCondPago> listarTblCondPago) {
 		this.listarTblCondPago = listarTblCondPago;
 	}
+
+	public void setDtFila(UIData dtFila) {
+		this.dtFila = dtFila;
+	}
+
 	public UIData getDtFila() {
 		return dtFila;
 	}
 	
+	public void registrarTblCondPago() {
+		
+		tblCondPago.getCodigo();
+		new ModeloTblCondPago().insertTblCondPago(tblCondPago);
+		cargarTable();
+		
+	}
 	
+	public void actualizarTblCondPago() {
+		
+		tblCondPago.getCodigo();
+		new ModeloTblCondPago().actalizarTblCondPago(tblCondPago);
+		cargarTable();
+		
+	}
 	
-	
-	
+  public void eliminarTblCondPago() {
+	  
+	  tblCondPago.getCodigo();
+	  new ModeloTblCondPago().eliminarCondPago(tblCondPago.getCodigo());
+	  cargarTable();
+	  
+	  
+  }
 	
 	
 

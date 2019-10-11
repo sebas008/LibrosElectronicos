@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import entity.MntTipoCambio;
+import entity.TblCondPago;
 
 public class ModeloMntTipoCambio {
 
@@ -77,8 +78,6 @@ public class ModeloMntTipoCambio {
 		}
 		
 	}
-	
-	
 	public void insertarSql(MntTipoCambio mntTipoCambio, EntityManager entityManager) {
 		
 		Query query = entityManager.createNativeQuery("insert into ");
@@ -88,13 +87,37 @@ public class ModeloMntTipoCambio {
 		query.setParameter(2, mntTipoCambio.getVenta());
 		query.executeUpdate();
 		
+	}
+	
+	public void eliminarTblConPago(String mntTipoCambio) {
 		
+		
+	EntityManager manager = factory.createEntityManager();
+	
+	try {
+		
+		
+		
+		//ModeloMntTipoCambio mntTipoCambio  = manager.find(ModeloMntTipoCambio.class, mntTipoCambio);
+		manager.getTransaction();
+		manager.merge(mntTipoCambio);
+		manager.getTransaction().commit();
+		
+	} catch (Exception e) {
+		System.out.println(e.getMessage());
+		manager.getTransaction().rollback();
+		// TODO: handle exception
+	}finally {
+		
+		manager.close();
+		factory.close();
+	}
+	
+	
 		
 		
 		
 	}
-	
-	
 	
 	
 }
