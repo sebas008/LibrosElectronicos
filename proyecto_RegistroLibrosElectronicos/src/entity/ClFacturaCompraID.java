@@ -15,7 +15,13 @@ public class ClFacturaCompraID implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String serieDoc; 
 	private String numDoc; 
-	private String cod_Pro;
+	private MntProveedor mntProveedor;
+	public MntProveedor getMntProveedor() {
+		return mntProveedor;
+	}
+	public void setMntProveedor(MntProveedor mntProveedor) {
+		this.mntProveedor = mntProveedor;
+	}
 	public String getSerieDoc() {
 		return serieDoc;
 	}
@@ -28,12 +34,7 @@ public class ClFacturaCompraID implements Serializable{
 	public void setNumDoc(String numDoc) {
 		this.numDoc = numDoc;
 	}
-	public String getCod_Pro() {
-		return cod_Pro;
-	}
-	public void setCod_Pro(String cod_Pro) {
-		this.cod_Pro = cod_Pro;
-	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -41,7 +42,7 @@ public class ClFacturaCompraID implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cod_Pro == null) ? 0 : cod_Pro.hashCode());
+		result = prime * result + ((mntProveedor == null) ? 0 : mntProveedor.hashCode());
 		result = prime * result + ((numDoc == null) ? 0 : numDoc.hashCode());
 		result = prime * result + ((serieDoc == null) ? 0 : serieDoc.hashCode());
 		return result;
@@ -55,10 +56,10 @@ public class ClFacturaCompraID implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		ClFacturaCompraID other = (ClFacturaCompraID) obj;
-		if (cod_Pro == null) {
-			if (other.cod_Pro != null)
+		if (mntProveedor == null) {
+			if (other.mntProveedor != null)
 				return false;
-		} else if (!cod_Pro.equals(other.cod_Pro))
+		} else if (!mntProveedor.equals(other.mntProveedor))
 			return false;
 		if (numDoc == null) {
 			if (other.numDoc != null)
@@ -71,7 +72,7 @@ public class ClFacturaCompraID implements Serializable{
 		} else if (!serieDoc.equals(other.serieDoc))
 			return false;
 		return true;
-	} 
-	
+	}
+
 	
 }

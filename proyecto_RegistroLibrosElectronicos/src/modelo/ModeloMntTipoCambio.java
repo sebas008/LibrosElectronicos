@@ -10,7 +10,6 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import entity.MntTipoCambio;
-import entity.TblCondPago;
 
 public class ModeloMntTipoCambio {
 

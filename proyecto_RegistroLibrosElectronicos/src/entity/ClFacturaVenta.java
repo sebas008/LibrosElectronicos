@@ -10,15 +10,21 @@ import javax.persistence.Table;
 public class ClFacturaVenta {
 	@EmbeddedId
 	private ClFacturaVentaID id;
-	private String periodo; 
-	private String moneda;
-	private String fecha;
-	private String tipoDoc;
-	private String razonS_Cli;	
-	private String cod_Re;	
+	
+	private TblPeriodoContable tblPeriodoContable;
+	
+	private TblMoneda tblMoneda;
+	
+	private MntTipoCambio mntTipoCambio;
+	
+	private TblTipoDoc TblTipoDoc;
+	private String razonS_Cli;
+	
+	private TblTipoRet tblTipoRet;	
 	private String des_Re;	
 	private String glosa_venta;
-	private String cod_estado;
+	
+	private TblEstadoDoc tblEstadoDoc;
 	private String des_estado;
 	private double tipoCambio;
 	private double valorVenta;
@@ -27,9 +33,7 @@ public class ClFacturaVenta {
 	private double total;
 	private int tasa_re;
 
-	public String getPeriodo() {
-		return periodo;
-	}
+	
 
 	public String getDes_estado() {
 		return des_estado;
@@ -39,36 +43,7 @@ public class ClFacturaVenta {
 		this.des_estado = des_estado;
 	}
 
-	public void setPeriodo(String periodo) {
-		this.periodo = periodo;
-	}
 
-	public String getMoneda() {
-		return moneda;
-	}
-
-	public void setMoneda(String moneda) {
-		this.moneda = moneda;
-	}
-
-	public String getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
-
-	public String getTipoDoc() {
-		return tipoDoc;
-	}
-
-	public void setTipoDoc(String tipoDoc) {
-		this.tipoDoc = tipoDoc;
-	}
-
-	
-	
 	public ClFacturaVentaID getId() {
 		return id;
 	}
@@ -85,13 +60,6 @@ public class ClFacturaVenta {
 		this.razonS_Cli = razonS_Cli;
 	}
 
-	public String getCod_Re() {
-		return cod_Re;
-	}
-
-	public void setCod_Re(String cod_Re) {
-		this.cod_Re = cod_Re;
-	}
 
 	public String getDes_Re() {
 		return des_Re;
@@ -109,12 +77,54 @@ public class ClFacturaVenta {
 		this.glosa_venta = glosa_venta;
 	}
 
-	public String getCod_estado() {
-		return cod_estado;
+
+
+	public TblPeriodoContable getTblPeriodoContable() {
+		return tblPeriodoContable;
 	}
 
-	public void setCod_estado(String cod_estado) {
-		this.cod_estado = cod_estado;
+	public void setTblPeriodoContable(TblPeriodoContable tblPeriodoContable) {
+		this.tblPeriodoContable = tblPeriodoContable;
+	}
+
+	public TblMoneda getTblMoneda() {
+		return tblMoneda;
+	}
+
+	public void setTblMoneda(TblMoneda tblMoneda) {
+		this.tblMoneda = tblMoneda;
+	}
+
+	public MntTipoCambio getMntTipoCambio() {
+		return mntTipoCambio;
+	}
+
+	public void setMntTipoCambio(MntTipoCambio mntTipoCambio) {
+		this.mntTipoCambio = mntTipoCambio;
+	}
+
+	public TblTipoDoc getTblTipoDoc() {
+		return TblTipoDoc;
+	}
+
+	public void setTblTipoDoc(TblTipoDoc tblTipoDoc) {
+		TblTipoDoc = tblTipoDoc;
+	}
+
+	public TblTipoRet getTblTipoRet() {
+		return tblTipoRet;
+	}
+
+	public void setTblTipoRet(TblTipoRet tblTipoRet) {
+		this.tblTipoRet = tblTipoRet;
+	}
+
+	public TblEstadoDoc getTblEstadoDoc() {
+		return tblEstadoDoc;
+	}
+
+	public void setTblEstadoDoc(TblEstadoDoc tblEstadoDoc) {
+		this.tblEstadoDoc = tblEstadoDoc;
 	}
 
 	public double getTipoCambio() {

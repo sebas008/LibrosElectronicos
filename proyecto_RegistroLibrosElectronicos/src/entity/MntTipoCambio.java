@@ -10,7 +10,8 @@ public class MntTipoCambio {
 
 	@Id
 	private String fecha;
-	private double compra, venta;
+	private double compra;
+	private double venta;
 
 	public String getFecha() {
 		return fecha;

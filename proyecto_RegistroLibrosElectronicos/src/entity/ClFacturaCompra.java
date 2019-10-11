@@ -15,31 +15,31 @@ public class ClFacturaCompra {
 	private ClFacturaCompraID id;
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
 			mappedBy="periodoContable")
-	private String periodo;
+	private TblPeriodoContable tblPeriodoContable;
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
 			mappedBy="moneda")
-	private String moneda;
+	private TblMoneda tblMoneda;
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
 			mappedBy="tipoCambio")
-	private String fecha; 
+	private MntTipoCambio mntTipoCambio; 
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
 			mappedBy="tipoDocumento")
-	private String tipoDoc;
+	private TblTipoDoc  tblTipoDoc;
 	private String razonS_Pro;
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
 			mappedBy="tipoRetencion")
-	private String cod_Re; 
+	private TblTipoRet tblTipoRet; 
 	private String des_Re; 
 	private String glosa_Compra;
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
 			mappedBy="estadoDoc")
-    private String cod_estado; 
+    private TblEstadoDoc tblEstadoDoc; 
     private String des_estado;    
     private String fechaRet; 
     private String nroRet;
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
 			mappedBy="tipoCompra")
-    private String codcom; 
+    private TblTipoCom tblTipoCom; 
     private String desCodcom;
 	private double tipoCambio; 
 	private double valorVenta; 
@@ -47,7 +47,7 @@ public class ClFacturaCompra {
 	private double igv;
 	private double total;
 	private double montoRet;
-	
+	private int tasa_re;
 
 	public String getFechaRet() {
 		return fechaRet;
@@ -73,13 +73,6 @@ public class ClFacturaCompra {
 		this.nroRet = nroRet;
 	}
 
-	public String getCodcom() {
-		return codcom;
-	}
-
-	public void setCodcom(String codcom) {
-		this.codcom = codcom;
-	}
 
 	public double getMontoRet() {
 		return montoRet;
@@ -87,12 +80,6 @@ public class ClFacturaCompra {
 
 	public void setMontoRet(double montoRet) {
 		this.montoRet = montoRet;
-	}
-
-	private int tasa_re;
-
-	public String getPeriodo() {
-		return periodo;
 	}
 
 	public String getDes_estado() {
@@ -103,49 +90,12 @@ public class ClFacturaCompra {
 		this.des_estado = des_estado;
 	}
 
-	public void setPeriodo(String periodo) {
-		this.periodo = periodo;
-	}
-
-	public String getMoneda() {
-		return moneda;
-	}
-
-	public void setMoneda(String moneda) {
-		this.moneda = moneda;
-	}
-
-	public String getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
-
-	public String getTipoDoc() {
-		return tipoDoc;
-	}
-
-	public void setTipoDoc(String tipoDoc) {
-		this.tipoDoc = tipoDoc;
-	}
-
-
 	public String getRazonS_Pro() {
 		return razonS_Pro;
 	}
 
 	public void setRazonS_Pro(String razonS_Pro) {
 		this.razonS_Pro = razonS_Pro;
-	}
-
-	public String getCod_Re() {
-		return cod_Re;
-	}
-
-	public void setCod_Re(String cod_Re) {
-		this.cod_Re = cod_Re;
 	}
 
 	public String getDes_Re() {
@@ -162,14 +112,6 @@ public class ClFacturaCompra {
 
 	public void setGlosa_Compra(String glosa_Compra) {
 		this.glosa_Compra = glosa_Compra;
-	}
-
-	public String getCod_estado() {
-		return cod_estado;
-	}
-
-	public void setCod_estado(String cod_estado) {
-		this.cod_estado = cod_estado;
 	}
 
 	public double getTipoCambio() {
@@ -227,5 +169,62 @@ public class ClFacturaCompra {
 	public void setId(ClFacturaCompraID id) {
 		this.id = id;
 	}
+
+	public TblPeriodoContable getTblPeriodoContable() {
+		return tblPeriodoContable;
+	}
+
+	public void setTblPeriodoContable(TblPeriodoContable tblPeriodoContable) {
+		this.tblPeriodoContable = tblPeriodoContable;
+	}
+
+	public TblMoneda getTblMoneda() {
+		return tblMoneda;
+	}
+
+	public void setTblMoneda(TblMoneda tblMoneda) {
+		this.tblMoneda = tblMoneda;
+	}
+
+	public MntTipoCambio getMntTipoCambio() {
+		return mntTipoCambio;
+	}
+
+	public void setMntTipoCambio(MntTipoCambio mntTipoCambio) {
+		this.mntTipoCambio = mntTipoCambio;
+	}
+
+	public TblTipoDoc getTblTipoDoc() {
+		return tblTipoDoc;
+	}
+
+	public void setTblTipoDoc(TblTipoDoc tblTipoDoc) {
+		this.tblTipoDoc = tblTipoDoc;
+	}
+
+	public TblTipoRet getTblTipoRet() {
+		return tblTipoRet;
+	}
+
+	public void setTblTipoRet(TblTipoRet tblTipoRet) {
+		this.tblTipoRet = tblTipoRet;
+	}
+
+	public TblEstadoDoc getTblEstadoDoc() {
+		return tblEstadoDoc;
+	}
+
+	public void setTblEstadoDoc(TblEstadoDoc tblEstadoDoc) {
+		this.tblEstadoDoc = tblEstadoDoc;
+	}
+
+	public TblTipoCom getTblTipoCom() {
+		return tblTipoCom;
+	}
+
+	public void setTblTipoCom(TblTipoCom tblTipoCom) {
+		this.tblTipoCom = tblTipoCom;
+	}
+	
 	
 }
