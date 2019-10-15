@@ -45,24 +45,27 @@ public class MntTipoCambioController {
 		this.dtFila = dtFila;
 	}
 
-	public void registrarTipoCambio() {
-		
-		mntTipoCambio.getCompra();
-		new ModeloMntTipoCambio().insertarTipoCambio(mntTipoCambio);
-	    cargarTable();
-	}
 	
 	public void cargarTable(){
 		listadoTipoCambio = new ModeloMntTipoCambio().listarTipoCambio();
 	}
 	
-	public void eliminarTipoCambio() {
-		
-		
-		mntTipoCambio.getCompra();
-		
-		
+	public void registrarTipoCambio() {
+		mntTipoCambio.getFecha();
+		new ModeloMntTipoCambio().insertarTipoCambio(mntTipoCambio);
+		cargarTable();
 	}
+	
+	public void actualizarTipoCambio() {
+		mntTipoCambio.getFecha();
+		new ModeloMntTipoCambio().actualizarTipoCambio(mntTipoCambio);
+		cargarTable();
+	}
+	
+	public void eliminarTipoCambio() {
+		new ModeloMntTipoCambio().eliminarTipoCambio(mntTipoCambio.getFecha());
+		cargarTable();
+	}	
 	
 	
 	

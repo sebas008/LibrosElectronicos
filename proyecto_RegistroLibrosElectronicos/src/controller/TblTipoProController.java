@@ -66,4 +66,6 @@ public class TblTipoProController {
 		cargarTable();
 	}
 	
+	
+	
 }

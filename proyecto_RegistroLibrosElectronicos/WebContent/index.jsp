@@ -1,4 +1,4 @@
 <% 
-    response.sendRedirect("./ui/usuario.jsf");
+    response.sendRedirect("./ui/moneda.jsf");
     return;
 %>

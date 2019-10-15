@@ -27,15 +27,15 @@ public class MntCliente {
 	}
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name="tblTipoPer",referencedColumnName="cod_pe")
+	@JoinColumn(name="tblTipoPer",referencedColumnName="codigo")
 	private TblTipoPer tblTipoPer; 
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name="tblTipoCli",referencedColumnName="tipo_cli")
+	@JoinColumn(name="tblTipoCli",referencedColumnName="codigo")
 	private TblTipoCli tblTipoCli; 
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name="tblCondPago",referencedColumnName="condicionPago")
+	@JoinColumn(name="tblCondPago",referencedColumnName="codigo")
 	private TblCondPago tblCondPago;
 	
 	public String getCodigo() {

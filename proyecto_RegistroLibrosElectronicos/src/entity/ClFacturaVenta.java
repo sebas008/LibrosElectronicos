@@ -1,7 +1,14 @@
 package entity;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -10,20 +17,26 @@ import javax.persistence.Table;
 public class ClFacturaVenta {
 	@EmbeddedId
 	private ClFacturaVentaID id;
-	
+	@ManyToOne(optional = false)
+	@JoinColumn(name="tblPeriodoContable",referencedColumnName="codPerdiodo")
 	private TblPeriodoContable tblPeriodoContable;
-	
+	@ManyToOne(optional = false)
+	@JoinColumn(name="tblMoneda",referencedColumnName="codigo")
 	private TblMoneda tblMoneda;
-	
+	@ManyToOne(optional = false)
+	@JoinColumn(name="mntTipoCambio",referencedColumnName="fecha")
 	private MntTipoCambio mntTipoCambio;
-	
-	private TblTipoDoc TblTipoDoc;
+	@ManyToOne(optional = false)
+	@JoinColumn(name="tblTipoDoc",referencedColumnName="codigo")
+private TblTipoDoc tblTipoDoc;
 	private String razonS_Cli;
-	
+	@ManyToOne(optional = false)
+	@JoinColumn(name="tblTipoRet",referencedColumnName="codigo")
 	private TblTipoRet tblTipoRet;	
 	private String des_Re;	
 	private String glosa_venta;
-	
+	@ManyToOne(optional = false)
+	@JoinColumn(name="tblEstadoDoc",referencedColumnName="codigo")
 	private TblEstadoDoc tblEstadoDoc;
 	private String des_estado;
 	private double tipoCambio;
@@ -32,8 +45,20 @@ public class ClFacturaVenta {
 	private double igv;
 	private double total;
 	private int tasa_re;
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
+			mappedBy="clFacturaVenta")
+	private Collection<MntCliente> listadoCliente;
 
 	
+
+	public Collection<MntCliente> getListadoCliente() {
+		return listadoCliente;
+	}
+
+	public void setListadoCliente(Collection<MntCliente> listadoCliente) {
+		this.listadoCliente = listadoCliente;
+	}
 
 	public String getDes_estado() {
 		return des_estado;
@@ -79,54 +104,7 @@ public class ClFacturaVenta {
 
 
 
-	public TblPeriodoContable getTblPeriodoContable() {
-		return tblPeriodoContable;
-	}
-
-	public void setTblPeriodoContable(TblPeriodoContable tblPeriodoContable) {
-		this.tblPeriodoContable = tblPeriodoContable;
-	}
-
-	public TblMoneda getTblMoneda() {
-		return tblMoneda;
-	}
-
-	public void setTblMoneda(TblMoneda tblMoneda) {
-		this.tblMoneda = tblMoneda;
-	}
-
-	public MntTipoCambio getMntTipoCambio() {
-		return mntTipoCambio;
-	}
-
-	public void setMntTipoCambio(MntTipoCambio mntTipoCambio) {
-		this.mntTipoCambio = mntTipoCambio;
-	}
-
-	public TblTipoDoc getTblTipoDoc() {
-		return TblTipoDoc;
-	}
-
-	public void setTblTipoDoc(TblTipoDoc tblTipoDoc) {
-		TblTipoDoc = tblTipoDoc;
-	}
-
-	public TblTipoRet getTblTipoRet() {
-		return tblTipoRet;
-	}
-
-	public void setTblTipoRet(TblTipoRet tblTipoRet) {
-		this.tblTipoRet = tblTipoRet;
-	}
-
-	public TblEstadoDoc getTblEstadoDoc() {
-		return tblEstadoDoc;
-	}
-
-	public void setTblEstadoDoc(TblEstadoDoc tblEstadoDoc) {
-		this.tblEstadoDoc = tblEstadoDoc;
-	}
-
+	
 	public double getTipoCambio() {
 		return tipoCambio;
 	}
@@ -174,5 +152,56 @@ public class ClFacturaVenta {
 	public void setTasa_re(int tasa_re) {
 		this.tasa_re = tasa_re;
 	}
+
+	public TblPeriodoContable getTblPeriodoContable() {
+		return tblPeriodoContable;
+	}
+
+	public void setTblPeriodoContable(TblPeriodoContable tblPeriodoContable) {
+		this.tblPeriodoContable = tblPeriodoContable;
+	}
+
+	public TblMoneda getTblMoneda() {
+		return tblMoneda;
+	}
+
+	public void setTblMoneda(TblMoneda tblMoneda) {
+		this.tblMoneda = tblMoneda;
+	}
+
+	public MntTipoCambio getMntTipoCambio() {
+		return mntTipoCambio;
+	}
+
+	public void setMntTipoCambio(MntTipoCambio mntTipoCambio) {
+		this.mntTipoCambio = mntTipoCambio;
+	}
+
+	public TblTipoDoc getTblTipoDoc() {
+		return tblTipoDoc;
+	}
+
+	public void setTblTipoDoc(TblTipoDoc tblTipoDoc) {
+		this.tblTipoDoc = tblTipoDoc;
+	}
+
+	public TblTipoRet getTblTipoRet() {
+		return tblTipoRet;
+	}
+
+	public void setTblTipoRet(TblTipoRet tblTipoRet) {
+		this.tblTipoRet = tblTipoRet;
+	}
+
+	public TblEstadoDoc getTblEstadoDoc() {
+		return tblEstadoDoc;
+	}
+
+	public void setTblEstadoDoc(TblEstadoDoc tblEstadoDoc) {
+		this.tblEstadoDoc = tblEstadoDoc;
+	}
+
+
+
 
 }

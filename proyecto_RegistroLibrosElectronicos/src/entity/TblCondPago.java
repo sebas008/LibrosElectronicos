@@ -6,11 +6,12 @@ import javax.persistence.Table;
 
 //notaciones
 @Entity
-@Table(name="condicionpago")
+@Table(name="condicionPago")
 public class TblCondPago {
 
 @Id
-private String codigo, descripcion;
+private String codigo;
+private String descripcion;
 
 	public String getCodigo() {
 		return codigo;

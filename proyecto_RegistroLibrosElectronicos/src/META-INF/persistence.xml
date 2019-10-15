@@ -11,6 +11,7 @@
 			<class>edu.cibertec.entity.ClFacturaVenta</class>
 			<class>edu.cibertec.entity.MntCliente</class>
 			<class>edu.cibertec.entity.MntProveedor</class>
+			<class>edu.cibertec.entity.MntTipoCambio</class>
 			<class>edu.cibertec.entity.TblCondPago</class>
 			<class>edu.cibertec.entity.TblEstadoDoc</class>
 			<class>edu.cibertec.entity.TblMoneda</class>

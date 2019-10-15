@@ -7,7 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name="facturaCompra")
 public class ClFacturaCompra {
 	
