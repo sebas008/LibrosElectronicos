@@ -47,7 +47,7 @@ private TblTipoDoc tblTipoDoc;
 	private int tasa_re;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
-			mappedBy="clFacturaVenta")
+			mappedBy="cliente")
 	private Collection<MntCliente> listadoCliente;
 
 	
