@@ -6,7 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name="cliente")
 public class MntCliente {
 	@Id
@@ -17,6 +17,16 @@ public class MntCliente {
 	private String telefono;
 	private String correo;
 	private String razonSocial;
+	
+	private MntCliente mntCliente;
+ 
+	public MntCliente getMntCliente() {
+		return mntCliente;
+	}
+
+	public void setMntCliente(MntCliente mntCliente) {
+		this.mntCliente = mntCliente;
+	}
 
 	public String getRazonSocial() {
 		return razonSocial;

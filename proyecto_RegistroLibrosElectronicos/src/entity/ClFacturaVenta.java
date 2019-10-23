@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name="facturaVenta")
 
 public class ClFacturaVenta {
@@ -47,7 +47,7 @@ private TblTipoDoc tblTipoDoc;
 	private int tasa_re;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},
-			mappedBy="cliente")
+			mappedBy="mntCliente")
 	private Collection<MntCliente> listadoCliente;
 
 	

@@ -7,11 +7,11 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<!-- Entidades (Clases) -->
 			<class>edu.cibertec.entity.UsuarioDTO</class>
-			<class>edu.cibertec.entity.ClFacturaCompra</class>
-			<class>edu.cibertec.entity.ClFacturaVenta</class>
-			<class>edu.cibertec.entity.MntCliente</class>
-			<class>edu.cibertec.entity.MntProveedor</class>
-			<class>edu.cibertec.entity.MntTipoCambio</class>
+			<!-- 	<class>edu.cibertec.entity.ClFacturaCompra</class>-->
+				<!-- <class>edu.cibertec.entity.ClFacturaVenta</class>-->
+				<!-- <class>edu.cibertec.entity.MntCliente</class>-->
+				<!-- <class>edu.cibertec.entity.MntProveedor</class>-->
+				<!-- <class>edu.cibertec.entity.MntTipoCambio</class>-->
 			<class>edu.cibertec.entity.TblCondPago</class>
 			<class>edu.cibertec.entity.TblEstadoDoc</class>
 			<class>edu.cibertec.entity.TblMoneda</class>
@@ -24,7 +24,7 @@
 			<class>edu.cibertec.entity.TblTipoRet</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bd_LibrosElectronicos" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bd_libroselectronicos" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="mysql" />
 			<!-- Dialecto MySql -->

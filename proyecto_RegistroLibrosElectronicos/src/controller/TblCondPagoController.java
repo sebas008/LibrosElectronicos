@@ -7,9 +7,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIData;
 
 import entity.TblCondPago;
-import entity.TblEstadoDoc;
 import modelo.ModeloTblCondPago;
-import modelo.ModeloTblEstadoDoc;
 
 @ManagedBean(name="tblCondPagoController")
 @ViewScoped
